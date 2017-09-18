@@ -1,0 +1,14 @@
+boto
+cycler
+gensim
+matplotlib
+nltk
+numpy
+oauthlib
+pandas
+pymongo
+scipy
+setuptools
+tweepy
+urllib3
+wheel
