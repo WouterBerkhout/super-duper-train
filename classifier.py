@@ -34,7 +34,8 @@ def extend_csv_with_sentiment(inputfile, outputfile, delimiter=';', text_row='te
 
     for row in reader:
         scores = _sid.polarity_scores(clean(row[text_row]))
-        writer.writerow({**row, **scores})
+        scores.update(row)
+        writer.writerow(scores)
 
     csv_in.close()
     csv_out.close()
