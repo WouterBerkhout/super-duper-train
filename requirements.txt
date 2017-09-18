@@ -6,7 +6,6 @@ nltk
 numpy
 oauthlib
 pandas
-pymongo
 scipy
 setuptools
 tweepy
