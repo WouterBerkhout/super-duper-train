@@ -24,10 +24,10 @@ def get_sentiment_scores(text):
     pass
 
 def extend_csv_with_sentiment(inputfile, outputfile, delimiter=';', text_row='text'):
-    csv_in = open(inputfile, 'r', encoding='utf-8')
-    csv_out = open(outputfile, 'w', encoding='utf-8')
+    csv_in = open(inputfile, 'r')
+    csv_out = open(outputfile, 'w')
 
-    fieldnames = [ 'dateime', 'state', 'latlon', 'text', 'pos', 'neg', 'neu', 'compound' ]
+    fieldnames = [ u'dateime', u'state', u'latlon', u'text', u'pos', u'neg', u'neu', u'compound' ]
     writer = csv.DictWriter(csv_out, fieldnames=fieldnames)
     writer.writeheader()
     reader = csv.DictReader(csv_in, delimiter=delimiter)
