@@ -11,3 +11,4 @@ setuptools
 tweepy
 urllib3
 wheel
+pymongo
