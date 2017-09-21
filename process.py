@@ -53,13 +53,14 @@ def load_processed_collection(n = 0):
                 continue
 
             state = place['full_name'][-2:]  # get last two characters to get us state
-            latlon = ''
+
+            lat = None
+            lon = None
             if place['place_type'] == 'city':
                 coordinates = place['bounding_box']['coordinates']
                 np_coordinates = np.array(coordinates[0])
                 lat = round(np.mean(np_coordinates[:, 1]), 5)
                 lon = round(np.mean(np_coordinates[:, 0]), 5)
-                latlon = "{},{}".format(lat, lon)
 
             dtime = datetime.datetime.fromtimestamp(int(tweet['timestamp_ms'][0:-3])).strftime(
                 '%Y-%m-%d %H:%M')
@@ -85,7 +86,8 @@ def load_processed_collection(n = 0):
                 'id': tweetid,
                 'userid': userid,
                 'state': state,
-                'latlon': latlon,
+                'lat': lat,
+                'lon': lon,
                 'datetime': dtime,
                 'text': text,
                 'cleantext': cleantext,
