@@ -62,8 +62,11 @@ def load_processed_collection(n = 0):
                 lat = round(np.mean(np_coordinates[:, 1]), 5)
                 lon = round(np.mean(np_coordinates[:, 0]), 5)
 
-            dtime = datetime.datetime.fromtimestamp(int(tweet['timestamp_ms'][0:-3])).strftime(
-                '%Y-%m-%d %H:%M')
+            _datetime = datetime.datetime.fromtimestamp(int(tweet['timestamp_ms'][0:-3]))
+            dtime = _datetime.strftime('%Y-%m-%d %H:%M')
+            date = _datetime.strftime('%Y-%m-%d')
+            hour = _datetime.strftime('%H')
+            timestamp = int(tweet['timestamp_ms'][0:-3])
 
             text = tweet['text']
             text = re.sub(r"[\n\r]", " ", text)  # remove newlines
@@ -89,7 +92,10 @@ def load_processed_collection(n = 0):
                 'lat': lat,
                 'lon': lon,
                 'datetime': dtime,
+                'date': date,
+                'hour': hour,
                 'text': text,
+                'timestamp': timestamp,
                 'cleantext': cleantext,
                 'nostops': nostops
             })
